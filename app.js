@@ -1,16 +1,19 @@
+var interval = 100;
+
 function loop() {
-    cannonBall.move();
+    cannonBall.move(interval / 1000);
     draw();
     console.log (cannonBall.x,cannonBall.y);
-    setTimeout(loop, 1000)
+    setTimeout(loop, interval)
 
 }
 var cannonBall = {
+    speed : 10, 
     x:0,
-    y:0,
-    move: function (){
-        this.x = this.x + 10;
-        this.y = this.y + 10;
+    y:100,
+    move: function (time){
+        var deltaX = this.speed * time; 
+       this.x = this.x + deltaX; 
     }
 } ;
 
@@ -20,7 +23,7 @@ var cannonBall = {
 var drawingSizeX = 400;
 var drawingSizeY = 400;
 var realWidth = 1000;
-var ratio = realWidth / drawingSizeX;
+var ratio = drawingSizeX / realWidth;
 var drawing = SVG('drawing').size(drawingSizeX, drawingSizeY);
 var rect = drawing.rect(drawingSizeX, drawingSizeY).attr({ fill: '#f06' });
 var circle = drawing.circle(10);

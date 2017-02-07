@@ -9,11 +9,15 @@ function loop() {
 }
 var cannonBall = {
     speed : 10, 
-    x:0,
+   direction : 0.1 * Math.PI,
+   x:0,
     y:100,
     move: function (time){
-        var deltaX = this.speed * time; 
-       this.x = this.x + deltaX; 
+        var distanceTravelled = this.speed * time; 
+        var deltaX = Math.cos(this.direction) * distanceTravelled;
+        var deltaY = Math.sin(this.direction) * distanceTravelled;
+        this.x = this.x + deltaX; 
+        this.y = this.y + deltaY;
     }
 } ;
 

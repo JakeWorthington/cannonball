@@ -33,8 +33,10 @@ var rect = drawing.rect(drawingSizeX, drawingSizeY).attr({ fill: '#f06' });
 var circle = drawing.circle(10);
 
 function draw (){
-     circle.x(cannonBall.x * ratio);
-  circle.y(drawingSizeY - cannonBall.y * ratio);
+    var newX = cannonBall.x * ratio;
+    var newY = drawingSizeY - cannonBall.y * ratio;
+     circle.x(newX);
+  circle.y(newY);
 }
 
 //start running

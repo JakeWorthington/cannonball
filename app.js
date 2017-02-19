@@ -10,7 +10,7 @@ function loop() {
     }
 }
 var cannonBall = {
-    speed: 10,
+    speed: 100,
     direction: 0.25 * Math.PI,
     x: 0,
     y: 0,
@@ -21,7 +21,7 @@ var cannonBall = {
         var deltaY = Math.sin(this.direction) * distanceTravelled;
 
         // Calculate gravity's impact on position
-        var gDeltaY = 0.5 * g * time;
+        var gDeltaY = 0.5 * g * time * time;
         deltaY = deltaY - gDeltaY;
 
         // Calculate new velocity
@@ -50,7 +50,7 @@ var cannonBall = {
 
 var drawingSizeX = 400;
 var drawingSizeY = 400;
-var realWidth = 1000;
+var realWidth = 1500;
 var ratio = drawingSizeX / realWidth;
 var drawing = SVG('drawing').size(drawingSizeX, drawingSizeY);
 var rect = drawing.rect(drawingSizeX, drawingSizeY).attr({ fill: '#f06' });

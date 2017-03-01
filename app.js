@@ -50,10 +50,10 @@ var cannonBall = {
 
 var drawingSizeX = 400;
 var drawingSizeY = 400;
-var realWidth = 1500;
+var realWidth = 1020;
 var ratio = drawingSizeX / realWidth;
 var drawing = SVG('drawing').size(drawingSizeX, drawingSizeY);
-var rect = drawing.rect(drawingSizeX, drawingSizeY).attr({ fill: '#f06' });
+var rect = drawing.rect(drawingSizeX, drawingSizeY).attr({ fill: '#00FFFF' });
 var circle = drawing.circle(10);
 circle.cx(cannonBall.x * ratio);
 circle.cy(drawingSizeY - cannonBall.y * ratio);

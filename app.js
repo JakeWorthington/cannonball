@@ -1,10 +1,11 @@
-var interval = 10;
+var interval = 100;
 var g = 9.81;
 
 function loop() {
     cannonBall.move(interval / 1000);
     draw();
     console.log(cannonBall.x, cannonBall.y, cannonBall.speed, cannonBall.direction);
+    outputStats();
     if (cannonBall.y > 0) {
         setTimeout(loop, interval)
     }
@@ -64,6 +65,14 @@ function draw() {
     var line = drawing.line(circle.cx(), circle.cy(), newX, newY).stroke({ width: 1 });
     circle.cx(newX);
     circle.cy(newY);
+}
+function outputStats() {
+    document.getElementById("time").innerHTML = "bob";
+    var roundedHeight = Math.round(cannonBall.y * 1000) /1000;
+    var roundedDistance = Math.round(cannonBall.x * 1000) /1000;
+    document.getElementById("height").innerHTML = roundedHeight;
+    document.getElementById("distance").innerHTML = roundedDistance;  
+
 }
 
 //start running

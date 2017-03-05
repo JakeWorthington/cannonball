@@ -1,4 +1,4 @@
-var interval = 100;
+var interval = 10;
 var g = 9.81;
 
 function loop() {
@@ -39,8 +39,16 @@ var cannonBall = {
         var newDirection = Math.atan2(newVelocity.y, newVelocity.x);
 
         // Update cannonbal with new data
-        this.x = this.x + deltaX;
-        this.y = this.y + deltaY;
+        if((this.y + deltaY) >= 0) {
+            this.x = this.x + deltaX;
+            this.y = this.y + deltaY;
+        } else {
+            var forwardMovementPerMetersDescent = deltaX / -deltaY;
+            deltaX = this.y * forwardMovementPerMetersDescent;
+            this.x = this.x + deltaX;
+            this.y = 0;
+        }
+
         this.speed = newSpeed;
         this.direction = newDirection;
     }
@@ -67,9 +75,8 @@ function draw() {
     circle.cy(newY);
 }
 function outputStats() {
-    document.getElementById("time").innerHTML = "bob";
-    var roundedHeight = Math.round(cannonBall.y * 1000) /1000;
-    var roundedDistance = Math.round(cannonBall.x * 1000) /1000;
+    var roundedHeight = Math.round(cannonBall.y * 100000) /100000;
+    var roundedDistance = Math.round(cannonBall.x * 100000) /100000;
     document.getElementById("height").innerHTML = roundedHeight;
     document.getElementById("distance").innerHTML = roundedDistance;  
 
